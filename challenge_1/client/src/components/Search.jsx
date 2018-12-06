@@ -21,7 +21,7 @@ class Search extends React.Component {
 
   onSubmit(e) {
     event.preventDefault();
-    this.props.data(this.state.searchInput);
+    this.props.data(1, this.state.searchInput);
   }
 
   render() {

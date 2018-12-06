@@ -11,7 +11,9 @@ class App extends React.Component {
 		this.state = {
 		  data: [],
 		  view: "default",
-		  active:1
+		  active:1,
+		  pageCount: 0,
+		  query: ""
 		}
 		this.getData = this.getData.bind(this);
 		
@@ -35,18 +37,24 @@ class App extends React.Component {
           method: 'GET',
           url:`/events?q=${word}&_pages=${pageNum}&_limit=10`,
           dataType: 'json',
-          success: (data) => {
+          success: (data, textStatus, request) => {
           	console.log(data);
             this.setState({
-              data: data
+              pageCount: Math.ceil(request.getResponseHeader('x-Total-Count')/10),
+              data: data,
+              query: word
             })
            }
         })
+
+
+       
 	}
 
-	handlePageChange(pageNumber) {
-	    console.log(`active page is ${pageNumber}`);
-	    this.setState({activePage: pageNumber});
+	handlePageChange(data) {
+	    var selected = data.selected + 1;
+        var  offset = Math.ceil(selected * 10);
+        this.getData(selected, this.state.query)
     }
     
 
@@ -55,13 +63,13 @@ class App extends React.Component {
       	return(
       		<div>
 
-      		  <Search data={this.getData} />
-      		  <ReactPaginate
-	            pageCount={pageCount}
-	            marginPagesDisplayed={2}
-	            pageRangeDisplayed={5}
-	            onPageChange={page => this.changeCurrentPage(page)}
-              />
+      		 <Search data={this.getData} />
+      		 <ReactPaginate
+		          pageCount={this.state.pageCount}
+		          marginPagesDisplayed={2}
+		          pageRangeDisplayed={5}
+		          onPageChange={this.handlePageClick}
+             />
       		  <ResultTable info={this.state.data}/>
       		</div>
       	);
