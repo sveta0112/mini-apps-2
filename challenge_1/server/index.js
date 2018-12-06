@@ -10,5 +10,5 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 
 app.listen(3000, () => {
-	console.log("Listening to port 3000!");
+	console.log("Listening to port 3000 from express!");
 });

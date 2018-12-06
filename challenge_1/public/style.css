@@ -1,0 +1,27 @@
+#ListTable {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    border-collapse: collapse;
+    width: 80%;
+    table-layout:fixed;
+  }
+
+#ListTable td, #ListTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    vertical-align: text-top;
+}
+
+#ListTable tr:nth-child(even){background-color: #f2f2f2;}
+#ListTable tr {max-width: 100%;}
+
+#ListTable tr:hover {background-color: #ddd;}
+
+#ListTable th {
+    padding-top: 10px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
