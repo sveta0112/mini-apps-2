@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "react-dev": "webpack -d --watch",
     "start": " nodemon server/server.js"
   },
   "keywords": [],
@@ -13,11 +13,14 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "chart.js": "^2.7.3",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "path": "^0.12.7",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-chartjs-2": "^2.7.4",
+    "react-dom": "^16.6.3",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.0",
